@@ -2,13 +2,10 @@ class Solution {
 public:
     bool isSortable(vector<int>& nums, int left, int right, int& left_max) {
         bool isSortable = true;
-        int inflexPoints = 0, max_val = INT_MIN, min_val = INT_MAX;
-        for (int i = left; i <= right; i++) {
+        int inflexPoints = 0, max_val = INT_MIN, min_val = INT_MAX, j = right;
+        for (int i = left; i <= right && inflexPoints < 2; i++) {
             max_val = max(max_val, nums[i]);
             min_val = min(min_val, nums[i]);
-        }
-        int j = right;
-        for (int i = left; i <= right && inflexPoints < 2; i++) {
             if (!(nums[i] >= nums[j])) {
                 inflexPoints++;
             }
